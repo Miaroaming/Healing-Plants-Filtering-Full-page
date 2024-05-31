@@ -3,13 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.min.css">
-    <title>Document</title>
+    <title>Single Page App</title>
 </head>
 <body>
     
-    <h2>Gulp BoilerPlate</h2>
+    <h2>Mimi's Herbs</h2>
 
+    <!-- Filters -->
+    <div class="filter-container">
+
+        <!-- Location Filter -->
+        <div class="filter">
+            <label for="location">Location:</label>
+            <select name="location" id="location" class="full-width-select">
+                <!-- Options for the select & a value -->
+                <option value="">All of New Zealand</option>
+                <option value="Northland">Northland</option>
+                <option value="Auckland">Auckland</option>
+                <option value="Waikato">Waikato</option>
+                <option value="Bay Of Plenty">Bay of Plenty</option>
+                <option value="Gisborne">Gisborne</option>
+                <option value="Hawkes Bay">Hawkes Bay</option>
+                <!-- Rest of options -->
+            </select>
+        </div>
+
+        <!-- Bedrooms -->
+        <div class="filter">
+            <label for="bedrooms">Bedrooms Min:</label>
+            <select name="bedrooms" id="bedrooms" class="full-width-select">
+                <option value="">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+                <option value="6">6+</option>
+            </select>
+        </div>
+
+        <!-- Bathrooms -->
+        <div class="filter">
+            <label for="bathrooms">Bathrooms Min:</label>
+            <select name="bathrooms" id="bathrooms" class="full-width-select">
+                <option value="">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4 or more</option>
+            </select>
+        </div>
+
+        <!-- Price Min -->
+        <div class="filter">
+            <label for="priceMin">Price Min:</label>
+            <select name="priceMin" id="priceMin" class="full-width-select">
+                <option value="">Any</option>
+                <option value="100000">$100k</option>
+                <option value="200000">$200k</option>
+                <option value="300000">$300k</option>
+                <option value="400000">$400k</option>
+                <option value="500000">$500k</option>
+                <option value="600000">$600k</option>
+                <option value="700000">$700k</option>
+                <option value="800000">$800k</option>
+                <option value="900000">$900k</option>
+                <option value="1000000">$1M</option>
+            </select>
+        </div>
+
+        <!-- Price Max -->
+        <div class="filter">
+            <label for="priceMax">Price Max:</label>
+            <select name="priceMax" id="priceMax" class="full-width-select">
+                <option value="">Any</option>
+                <option value="100000">$100k</option>
+                <option value="200000">$200k</option>
+                <option value="300000">$300k</option>
+                <option value="400000">$400k</option>
+                <option value="500000">$500k</option>
+                <option value="600000">$600k</option>
+                <option value="700000">$700k</option>
+                <option value="800000">$800k</option>
+                <option value="900000">$900k</option>
+                <option value="1000000">$1M</option>
+            </select>
+        </div>
+
+    </div>
+    <!-- End of filter container -->
+
+   <!-- Sorting Options -->
+   <div class="sorting-container">
+    <p>Sorting Options:</p>
+    <div class="sorting-btn-container">
+        <button class="sorting-button" id="price-high-to-low-btn">$$$ - $</button>
+        <button class="sorting-button" id="price-low-to-high-btn">$ - $$$</button>
+        <button class="sorting-button" id="alphabetical-btn">A - Z</button>
+    </div>
+</div>
+
+    <!-- Results Grid -->
+    <div class="results" id="results"></div>
+
+    <!-- Modal *TO BE DONE* -->
+    <dialog id="details-modal">
+        <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-contents">
+            <!-- populated thru js -->
+        </div>
+    </dialog>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/c252db7e5f.js" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
     <script src="./js/script.js"></script>
 </body>
 </html>

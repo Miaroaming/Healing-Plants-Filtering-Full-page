@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sevillana&family=Shadows+Into+Light&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px 0;
+  background-color: rgb(39, 34, 34);
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter label {
+  margin-bottom: 4px;
+  color: white;
+}
+
+select {
+  width: 200px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #1f1f1f;
+}
+
+/* Sorting */
+.sorting-container {
+  background-color: #1f1f1f;
+  padding: 30px 0;
+}
+
+.sorting-container p {
+  text-align: center;
+  color: white;
+}
+
+.sorting-btn-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.sorting-button {
+  border: 1px solid white;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: white;
+  border-radius: 16px;
+  background-color: #1f1f1f;
+}
+
+.sorting-button:hover {
+  cursor: pointer;
+}
+
+/* Results */
+.results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 30px 60px 120px 60px;
+}
+
+.no-results {
+  text-align: center;
+  grid-column: 1/-1;
+}
+
+.property {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.property:hover {
+  scale: 1.1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.property-image {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 250px;
+}
+
+.property-details {
+  padding: 16px;
+}
+
+.property-details h2 {
+  margin: 8px 0;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.property-details p {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.more-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.more-details h4 {
+  color: #33924a;
+}
+
+.property-amenities {
+  display: flex;
+  gap: 8px;
+}
+
+.property-amenities p {
+  font-weight: 400;
+  color: rgb(155, 162, 169);
+  font-size: 16px;
+}
+
+/* Swiper */
+.swiper {
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  height: 250px;
+}
+
+.swiper-pagination {
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 16px;
+}
+
+.swiper-pagination-bullet {
+  background: antiquewhite;
+  width: 16px;
+  height: 16px;
+}
+
+/* modal styling */
+dialog {
+  z-index: 10;
+  position: fixed;
+  width: 40%;
+  height: 60vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  border: none;
+  position: relative;
+  padding-bottom: 42px;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+body.modal-open {
+  overflow: hidden; /* Prevent scrolling while modal is open */
+}
+
+#close-modal {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background-color: #33924a;
+  border-radius: 50%;
+  padding: 8px 12px;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+}
+
+.modal-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-contents img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.modal-contents h2 {
+  margin-top: 30px;
+  margin-bottom: 8px;
+}
+
+.modal-contents h4 {
+  color: #33924a;
+  font-size: 24px;
+  margin-top: 16px;
+}
+
+.modal-ammenities {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 16px;
+}
+
+.property-description {
+  font-weight: 300;
+  margin-top: 16px;
+  padding: 0px 60px;
+  line-height: 150%;
+}
+
+.booking-button {
+  padding: 12px 16px;
+  margin-top: 30px;
+  background-color: #33924a;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-size: 16px;
+}
+
+/* Media Queries!!! */
+@media only screen and (max-width: 1200px) {
+  header h1 {
+    font-size: 4em;
+    text-align: center;
+  }
+  .filter-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  select {
+    width: 600px;
+  }
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  dialog {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .results {
+    grid-template-columns: 1fr;
+  }
+  select {
+    max-width: 300px;
+  }
+  dialog {
+    height: 80vh;
+  }
+  .property-description {
+    padding: 0 32px;
+  }
+}/*# sourceMappingURL=style.css.map */
