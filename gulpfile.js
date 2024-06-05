@@ -27,8 +27,6 @@ function serve(done) {
 function styles(done) {
     gulp.src('css/style.scss') // source file for sass
         .pipe(sass({ outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(rename({suffix: '.min'})) // minify css file made be sass
-        .pipe(minifycss({ processImport: false}))
         .pipe(gulp.dest('css/')) // destination folder for the css file
         .pipe(connect.reload());
     done();

@@ -1,481 +1,264 @@
 /* jshint esversion: 6 */
+document.addEventListener('DOMContentLoaded', function () {
+    new fullpage('#fullpage', {
+        licenseKey: 'gplv3-license',
+        autoScrolling: true,
+        navigation: true,
+        anchors: ['Welcome', 'Lavender', 'Eucalyptus', 'Rosemary', 'Aloe-Vera'],
+        navigationTooltips: ['Welcome', 'Lavender', 'Eucalyptus', 'Rosemary', 'Aloe-Vera'],
+        showActiveTooltip: true,
+        scrollingSpeed: 700,
+    });
+});
 
-const properties = [{
-    id: 1,
-    name: "Cozy Cottage",
-    location: "Gisborne",
-    price: "$200,000",
-    bedrooms: 2,
-    bathrooms: 2,
-    image: "https://source.unsplash.com/category/house/?cozy+cottage",
-    description: `Welcome to "Cozy Cottage" nestled in the serene locale of Gisborne, offering a tranquil escape from the hustle and bustle of urban life. Priced at a steal for $200,000, this charming abode boasts 2 snug bedrooms and 2 immaculate bathrooms, ensuring comfort and convenience for its lucky inhabitants.
-    <br></br>Picture yourself unwinding in the cozy ambiance of this cottage, where every corner exudes warmth and relaxation. Whether you're curling up with a book by the fireplace or savoring a cup of tea on the quaint porch, each moment spent here promises to be nothing short of blissful.`
-},
-{
-    id: 2,
-    name: "Modern Loft",
-    location: "Bay Of Plenty",
-    price: "$350,000",
-    bedrooms: 3,
-    bathrooms: 2.5,
-    image: "https://source.unsplash.com/category/house/?modern+loft"
-},
-{
-    id: 3,
-    name: "Seaside Villa",
-    location: "Northland",
-    price: "$1,000,000",
-    bedrooms: 4,
-    bathrooms: 3,
-    image: "https://source.unsplash.com/category/house/?seaside+villa"
-},
-{
-    id: 4,
-    name: "Rustic Cabin",
-    location: "Marlborough",
-    price: "$150,000",
-    bedrooms: 1,
-    bathrooms: 1,
-    image: "https://source.unsplash.com/category/house/?rustic+cabin"
-},
-{
-    id: 5,
-    name: "Urban Apartment",
-    location: "Wellington",
-    price: "$500,000",
-    bedrooms: 2,
-    bathrooms: 1.5,
-    image: "https://source.unsplash.com/category/house/?urban+apartment"
-},
-{
-    id: 6,
-    name: "Luxury Penthouse",
-    location: "Nelson",
-    price: "$2,200,000",
-    bedrooms: 4,
-    bathrooms: 3.5,
-    image: "https://source.unsplash.com/category/house/?luxury+penthouse"
-},
-{
-    id: 7,
-    name: "Beachfront Villa",
-    location: "Bay Of Plenty",
-    price: "$1,800,000",
-    bedrooms: 5,
-    bathrooms: 4,
-    image: "https://source.unsplash.com/category/house/?beachfront+villa"
-},
-{
-    id: 8,
-    name: "Countryside Estate",
-    location: "Canterbury",
-    price: "$1,600,000",
-    bedrooms: 6,
-    bathrooms: 5,
-    image: "https://source.unsplash.com/category/house/?countryside+estate"
-},
-{
-    id: 9,
-    name: "Downtown Condo",
-    location: "Auckland",
-    price: "$700,000",
-    bedrooms: 2,
-    bathrooms: 2,
-    image: "https://source.unsplash.com/category/house/?downtown+condo"
-},
-{
-    id: 10,
-    name: "Mountain Chalet",
-    location: "Otago",
-    price: "$900,000",
-    bedrooms: 3,
-    bathrooms: 2.5,
-    image: "https://source.unsplash.com/category/house/?mountain+chalet"
-},
-{
-    id: 11,
-    name: "Luxury Penthouse",
-    location: "Nelson",
-    price: "$2,200,000",
-    bedrooms: 4,
-    bathrooms: 3.5,
-    image: "https://source.unsplash.com/category/house/?luxury+penthouse"
-},
-{
-    id: 12,
-    name: "Beachfront Villa",
-    location: "Bay Of Plenty",
-    price: "$1,800,000",
-    bedrooms: 5,
-    bathrooms: 4,
-    image: "https://source.unsplash.com/category/house/?beachfront+villa"
-},
-{
-    id: 13,
-    name: "Countryside Estate",
-    location: "Canterbury",
-    price: "$1,600,000",
-    bedrooms: 6,
-    bathrooms: 5,
-    image: "https://source.unsplash.com/category/house/?countryside+estate"
-},
-{
-    id: 14,
-    name: "Downtown Condo",
-    location: "Auckland",
-    price: "$700,000",
-    bedrooms: 2,
-    bathrooms: 2,
-    image: "https://source.unsplash.com/category/house/?downtown+condo"
-},
-{
-    id: 15,
-    name: "Mountain Chalet",
-    location: "Otago",
-    price: "$900,000",
-    bedrooms: 3,
-    bathrooms: 2.5,
-    image: "https://source.unsplash.com/category/house/?mountain+chalet"
-},
-{
-    id: 16,
-    name: "Sunny Bungalow",
-    location: "Hawkes Bay",
-    price: "$280,000",
-    bedrooms: 3,
-    bathrooms: 2,
-    image: "https://source.unsplash.com/category/house/?sunny+bungalow"
-},
-{
-    id: 17,
-    name: "Oceanview Condo",
-    location: "West Coast",
-    price: "$420,000",
-    bedrooms: 2,
-    bathrooms: 1.5,
-    image: "https://source.unsplash.com/category/house/?oceanview+condo"
-},
-{
-    id: 18,
-    name: "Country Farmhouse",
-    location: "Manawatu",
-    price: "$550,000",
-    bedrooms: 4,
-    bathrooms: 3,
-    image: "https://source.unsplash.com/category/house/?country+farmhouse"
-},
-{
-    id: 19,
-    name: "City Penthouse",
-    location: "Taranaki",
-    price: "$1,200,000",
-    bedrooms: 3,
-    bathrooms: 2,
-    image: "https://source.unsplash.com/category/house/?city+penthouse"
-},
-{
-    id: 20,
-    name: "Lakeside Retreat",
-    location: "Waikato",
-    price: "$780,000",
-    bedrooms: 5,
-    bathrooms: 4,
-    image: "https://source.unsplash.com/category/house/?lakeside+retreat"
+// Function to move to the specified section
+function moveToSection(sectionNumber) {
+    fullpage_api.moveTo(sectionNumber);
 }
+
+// Add event listeners to buttons using their IDs
+document.getElementById('goToSection1').addEventListener('click', function () {
+    moveToSection(1);
+});
+
+document.getElementById('goToSection2').addEventListener('click', function () {
+    moveToSection(2);
+});
+
+document.getElementById('goToSection3').addEventListener('click', function () {
+    moveToSection(3);
+});
+
+document.getElementById('goToSection4').addEventListener('click', function () {
+    moveToSection(4);
+});
+
+document.getElementById('goToSection5').addEventListener('click', function () {
+    moveToSection(5);
+});
+
+
+// Filter js
+// My Arrays
+const plants = [{
+        id: 1,
+        name: "Lavender",
+        type: "Flowers",
+        benefits: "Stress Relief and Sleep Aid, Anti-Inflammatory, Pain Relief, Blood Sugar Regulation",
+        price: "$14.90",
+        image1: "./images/lavClose.webp",
+        image2: "./images/lavOil.webp",
+        image3: "./images/lavFar.webp",
+        description: `Known for its calming effect, lavender has a wonderful aroma, immune-supporting capacity, and a
+    soothing fragrance. <br> <br> Some studies suggest lavender can improve your body’s melatonin levels, supporting a better night’s rest. <br> <br> It has also be proven to reduce pain, inflammation, anxiety, and depression, whilst improving mood and lowering blood pressure.`
+    },
+    {
+        id: 2,
+        name: "Rosemary",
+        type: "Shrubs",
+        benefits: "Antioxidant, Anti-Inflammatory, Stress Relief and Sleep Aid, Antibacterial",
+        price: "$20.20",
+        image1: "./images/rosemaryClose.webp",
+        image2: "./images/rosemaryOil.webp",
+        image3: "./images/rosemaryFar.webp",
+        description: `Traditional uses of rosemary include helping alleviate muscle pain, improving memory, boosting the immune and circulatory system, and promoting hair growth. <strong>Warning:</strong> Very high doses may cause vomiting, coma, and pulmonary edema.`
+    },
+    {
+        id: 3,
+        name: "Aloe Vera",
+        type: "Shrubs",
+        benefits: "Anti-Inflammatory, Skin Health, Pain Relief, Cardiovascular Health, Blood Sugar Regulation",
+        price: "$10.60",
+        image1: "./images/aloeClose.webp",
+        image2: "./images/aloeGel.webp",
+        image3: "./images/aloeFar.webp",
+        description: `Aloe vera is a medicinal plant with antioxidant and antibacterial properties. One of the most well-known healing plants, aloe can be used to retain skin moisture, prevent ulcers, improve wound healing, and treat burns. <strong>Warning:</strong> Ingest sparingly.`
+    },
+    {
+        id: 4,
+        name: "Eucalyptus",
+        type: "Trees",
+        benefits: "Antibacterial, Anti-Inflammatory, Antioxidant, Immune System Boost, Pain Relief",
+        price: "$10.60",
+        image1: "./images/eucaClose.webp",
+        image2: "./images/eucaOil.webp",
+        image3: "./images/eucaFar.webp",
+        description: `Eucalyptus is commonly used for its anti-inflammatory and anti-microbial properties. Eucalyptus leaves have many therapeutic benefits, from reducing discomfort to freshening breath. <strong>Warning:</strong> You can drink eucalyptus tea but avoid eucalyptus oil as it can be harmful even in small amounts.`
+    },
+    {
+        id: 5,
+        name: "Basil",
+        type: "Herbs",
+        benefits: "Antibacterial, Anti-inflammatory, Antioxidant, Immune System Boost, Blood Sugar Regulation",
+        price: "$19.90",
+        image1: "./images/basilClose.webp",
+        image2: "./images/basilOil.webp",
+        image3: "./images/basilFar.webp",
+        description: `There are more than 60 varieties of basil, with sweet basil being one of the most widely used. Basil contains many vitamins and minerals, as well as antioxidants. Many of its health benefits come from these antioxidants, as well as its essential oils.`
+    },
+    {
+        id: 6,
+        name: "Tumeric",
+        type: "Spices",
+        benefits: "Anti-inflammatory, Antioxidant, Cardiovascular Health",
+        price: "$10.50",
+        image1: "./images/tumericClose.webp",
+        image2: "./images/tumericOil.webp",
+        image3: "./images/tumericFar.webp",
+        description: `Many high-quality studies show that turmeric has major benefits for your body and brain. Many of these benefits come from its main active ingredient, curcumin. People use it to help relieve pain, reduce inflammation, and promote healing.`
+    },
+    {
+        id: 7,
+        name: "Chamomile",
+        type: "Flowers",
+        benefits: "Anti-inflammatory, Antioxidant, Stress Relief and Sleep Aid, Pain Relief",
+        price: "$10.50",
+        image1: "./images/chamClose.webp",
+        image2: "./images/chamOil.webp",
+        image3: "./images/chamFar.webp",
+        description: `Chamomile preparations are commonly used for many human ailments such as hay fever, inflammation, muscle spasms, menstrual disorders, insomnia, ulcers, wounds, gastrointestinal disorders, rheumatic pain, and hemorrhoids. Essential oils of chamomile are used extensively in cosmetics and aromatherapy.`
+    },
+    {
+        id: 8,
+        name: "Licorice Root",
+        type: "Roots",
+        benefits: "Digestive Health, Anti-Inflammatory, Antibacterial, Antioxidant, Skin Health",
+        price: "$13.00",
+        image1: "./images/liqClose.webp",
+        image2: "./images/liqPowder.webp",
+        image3: "./images/liqFar.webp",
+        description: `Today, licorice root is promoted as a dietary supplement for conditions such as digestive problems, menopausal symptoms, cough, and bacterial and viral infections. <strong>Warning:</strong> Do not use chronically or in large doses.`
+    },
+    {
+        id: 9,
+        name: "Chia Seeds",
+        type: "Seeds",
+        benefits: "Digestive Health, Anti-Inflammatory, Antibacterial, Antioxidant, Skin Health, Cardiovascular Health, Blood Sugar Regulation",
+        price: "$7.80",
+        image1: "./images/chiaClose.webp",
+        image2: "./images/chiaOil.webp",
+        image3: "./images/chiaFar.webp",
+        description: `Chia seeds are an excellent source of fiber, which can improve heart health, reduce cholesterol levels and promote intestinal health. It is advised to soak the seeds in a liquid before consuming, otherwise it could form “a concrete-like mass in your digestive tract”, which can lead to them getting stuck.`
+    },
+    {
+        id: 10,
+        name: "Elderberry",
+        type: "Fruits, Flowers",
+        benefits: "Digestive Health, Anti-Inflammatory, Antibacterial, Antioxidant, Skin Health, Cardiovascular Health, Blood Sugar Regulation, Immune System Boost",
+        price: "$9.50",
+        image1: "./images/elderClose.webp",
+        image2: "./images/elderOil.webp",
+        image3: "./images/elderFar.webp",
+        description: `It is most often taken as a supplement to treat cold and flu symptoms. <strong>Warning:</strong> However, the raw berries, bark, and leaves are poisonous.`
+    },
+    {
+        id: 11,
+        name: "Flaxseeds",
+        type: "Seeds",
+        benefits: "Digestive Health, Antioxidant, Cardiovascular Health, Blood Sugar Regulation",
+        price: "$11.40",
+        image1: "./images/flaxClose.webp",
+        image2: "./images/flaxOil.webp",
+        image3: "./images/flaxFar.webp",
+        description: `One serving of flaxseed provides protein, fiber, and omega-3 fatty acids. It may help lower the risk of some cancers, help you maintain a moderate weight, and reduce cholesterol and blood pressure.`
+    },
+    {
+        id: 12,
+        name: "Willow Bark",
+        type: "Trees",
+        benefits: "Pain Relief, Anti-Inflammatory, Immune System Boost, Skin Health",
+        price: "$28.00",
+        image1: "./images/willowClose.webp",
+        image2: "./images/willowOil.webp",
+        image3: "./images/willowFar.webp",
+        description: `Willow bark has been used throughout the centuries in China and Europe, and continues to be used today for the treatment of pain, headache, and inflammatory conditions.`
+    },
+    {
+        id: 13,
+        name: "Sage",
+        type: "Herbs, Spices",
+        benefits: "Pain Relief, Anti-Inflammatory, Skin Health, Blood Sugar Regulation, Cardiovascular Health, Antioxidant",
+        price: "$19.20",
+        image1: "./images/sageClose.webp",
+        image2: "./images/sageOil.webp",
+        image3: "./images/sageFar.webp",
+        description: `Sage is an herb with several promising health benefits. It's high in antioxidants and may help support oral health, aid brain function and lower blood sugar and cholesterol levels. This green spice is also easy to add to almost any savory dish.`
+    },
+    {
+        id: 14,
+        name: "Ginger",
+        type: "Roots, Spices",
+        benefits: "Digestive Health, Antioxidant, Anti-Inflammatory, Blood Sugar Regulation, Pain Relief",
+        price: "$15.30",
+        image1: "./images/gingerClose.webp",
+        image2: "./images/gingerOil.webp",
+        image3: "./images/gingerFar.webp",
+        description: `Ginger may have numerous health benefits due to its anti-inflammatory, anti-nausea, and other properties. You can use ginger fresh, dried, powdered, or as an oil or juice.`
+    },
+    {
+        id: 15,
+        name: "Calendula",
+        type: "Flowers",
+        benefits: "Antioxidant, Skin Health, Antibacterial, Anti-Inflammatory, Cardiovascular Health, Pain Relief",
+        price: "$12.50",
+        image1: "./images/calClose.webp",
+        image2: "./images/calOil.webp",
+        image3: "./images/calFar.webp",
+        description: `Calendula, a flowering plant also known as pot marigold, can be served as a tea or used as an ingredient in various herbal formulations. Calendula has been used to treat a variety of skin conditions.`
+    },
+    {
+        id: 16,
+        name: "Hemp Seed",
+        type: "Seeds",
+        benefits: "Digestive Health, Antioxidant, Skin Health, Anti-Inflammatory, Cardiovascular Health",
+        price: "$13.50",
+        image1: "./images/hempClose.webp",
+        image2: "./images/hempOil.webp",
+        image3: "./images/hempFar.webp",
+        description: `Many people consider hemp seeds a superfood. They have a rich nutritional profile and provide a range of health benefits. Benefits of hemp seeds include protecting the brain, boosting heart health, and improving skin conditions.`
+    },
+    {
+        id: 17,
+        name: "Goji Berry",
+        type: "Fruits",
+        benefits: "Digestive Health, Antioxidant, Anti-Inflammatory, Antibacterial, Blood Sugar Regulation, Cardiovascular Health, Immune System Boost, Stress Relief and Sleep Aid",
+        price: "$30.00",
+        image1: "./images/gojiClose.webp",
+        image2: "./images/gojiOil.webp",
+        image3: "./images/gojiFar.webp",
+        description: `Goji berries have long been consumed for their high nutrient content and reported medicinal benefits. They are typically eaten dried and can be added to smoothies, cereals or baked goods.`
+    },
+    {
+        id: 18,
+        name: "Witch Hazel",
+        type: "Shrubs",
+        benefits: "Skin Health, Anti-Inflammatory, Antibacterial",
+        price: "$12.00",
+        image1: "./images/witchClose.webp",
+        image2: "./images/witchOil.webp",
+        image3: "./images/witchFar.webp",
+        description: `When used in a water-based solution or as an ingredient in skincare products, witch hazel can help soothe minor skin problems, such as acne, bug bites, and hemorrhoids. Witch hazel can also reduce scalp redness and help protect against the skin damage from air pollution.`
+    },
+    {
+        id: 19,
+        name: "Hibiscus",
+        type: "Shrubs",
+        benefits: "Blood Sugar Regulation, Antioxidant, Anti-Inflammatory, Cardiovascular Health, Antibacterial",
+        price: "$12.80",
+        image1: "./images/hibClose.webp",
+        image2: "./images/hibOil.webp",
+        image3: "./images/hibFar.webp",
+        description: `Hibiscus is high in antioxidants and offers many potential benefits. In particular, it may help promote weight loss, reduce the growth of bacteria and cancer cells, and support the health of the heart and liver. Hibiscus is available as an extract or, more often, a tea.`
+    },
+    {
+        id: 20,
+        name: "Echinacea",
+        type: "Flower",
+        benefits: "Antioxidant, Anti-Inflammatory, Antibacterial, Immune System Boost, Blood Sugar Regulation",
+        price: "$12.80",
+        image1: "./images/echinClose.webp",
+        image2: "./images/echinOil.webp",
+        image3: "./images/echinFar.webp",
+        description: `Echinacea (aka purple coneflower) is a group of plants that are rich in antioxidants and may help support immunity. They’re available in several different forms, which vary in terms of recommended dosage.`
+    },
 ];
-
-// get input elements 
-// - our filters
-const locationFilter = document.getElementById("location");
-const bedroomsFilter = document.getElementById("bedrooms");
-const bathroomsFilter = document.getElementById("bathrooms");
-const priceMin = document.getElementById("priceMin");
-const priceMax = document.getElementById("priceMax");
-// - our sorting buttons
-const highToLowBtn = document.getElementById('price-high-to-low-btn');
-const lowToHighBtn = document.getElementById('price-low-to-high-btn');
-const alphabeticalBtn = document.getElementById('alphabetical-btn');
-
-// ------------*********** CLICK FUNCTIONS ***********------------
-//onchange event on each filter:
-//location
-locationFilter.addEventListener("change", function () {
-console.dir(locationFilter.value);
-filterAndPopulateResults();
-});
-
-//bedrooms
-bedroomsFilter.addEventListener("change", function () {
-console.dir(bedroomsFilter.value);
-filterAndPopulateResults();
-});
-
-//bathrooms
-bathroomsFilter.addEventListener("change", function () {
-console.dir(bathroomsFilter.value);
-filterAndPopulateResults();
-});
-
-//price min
-priceMin.addEventListener("change", function () {
-console.dir(priceMin.value);
-filterAndPopulateResults();
-});
-
-//price max
-priceMax.addEventListener("change", function () {
-console.dir(priceMax.value);
-filterAndPopulateResults();
-});
-
-//  ------------ Sorting Button Clicks: --------
-highToLowBtn.addEventListener('click', function() {
-const filteredProperties = filterProperties();
-const sortedProperties = sortPropertiesByPriceHighToLow(filteredProperties); // sorting filtered properties by price high to low
-populateResults(sortedProperties);
-});
-
-lowToHighBtn.addEventListener('click', function() {
-const filteredProperties = filterProperties();
-const sortedProperties = sortPropertiesByPriceLowToHigh(filteredProperties); // sorting filtered properties by price low to high
-populateResults(sortedProperties);
-});
-
-alphabeticalBtn.addEventListener('click', function() {
-const filteredProperties = filterProperties();
-const sortedProperties = sortPropertiesAlphabetical(filteredProperties); // sorting filtered properties by name alphabetically
-populateResults(sortedProperties);
-});
-
-
-// ------------********* FILTERING FUNCTIONS & LOGIC *********----------
-//filter results - return an array of filtered properties
-function filterProperties() {
-const filteredProperties = properties.filter(property => {
-    // check if location matches
-    const propertyLocation = property.location.toLowerCase();
-    const filterValue = locationFilter.value.toLowerCase();
-    // that it doesnt match so it returns false and doesnt add to the array
-    if (filterValue && !propertyLocation.includes(filterValue)) {
-        // if property location doesnt include the filter value return false
-        return false;
-    }
-
-    // check if number of bedrooms match
-    if (bedroomsFilter.value && parseInt(property.bedrooms) <= parseInt(bedroomsFilter.value)) {
-        return false;
-    }
-
-    // check if number of bathrooms match
-    if (bathroomsFilter.value && parseFloat(property.bathrooms) <= parseFloat(bathroomsFilter.value)) {
-        return false;
-    }
-
-    // Check if the price falls within the specificed range
-    const priceValue = parseFloat(property.price.replace(/\$/g, '').replace(/,/g, '')); // removes $ and , from price and make the number a floating number
-    const minPrice = parseFloat(priceMin.value);
-    const maxPrice = parseFloat(priceMax.value);
-    if ((minPrice && priceValue < minPrice) || (maxPrice && priceValue > maxPrice)) {
-        return false;
-    }
-    //if all conditions pass, include the proper in the filtered array
-    return true;
-});
-
-// retrun the filtered propertied array - can access outside
-return filteredProperties;
-}
-
-// ------------ SORT FUNTCIONS --------------
-// sort results - sort by price - lowest to highest
-function sortPropertiesByPriceLowToHigh(properties) {
-    return properties.sort((a, b) => {
-        const priceA = parseFloat(a.price.replace(/\$/g, '').replace(/,/g, ''));
-        const priceB = parseFloat(b.price.replace(/\$/g, '').replace(/,/g, ''));
-        return priceA - priceB;
-    });
-}
-
-// sort results - sort by price - high to low
-function sortPropertiesByPriceHighToLow(properties) {
-    return properties.sort((a, b) => {
-        const priceA = parseFloat(a.price.replace(/\$/g, '').replace(/,/g, ''));
-        const priceB = parseFloat(b.price.replace(/\$/g, '').replace(/,/g, ''));
-        return priceB - priceA;
-    });
-}
-
-// Sort by name alphabetically
-function sortPropertiesAlphabetical(properties) {
-    return properties.sort((a,b) => {
-        const nameA = a.name.toLowerCase(); // property a name to lowercase
-        const nameB = b.name.toLowerCase(); // property b name to lowercase
-        return nameA.localeCompare(nameB);
-    });
-}
-
-
-// ------------************* POPULATION FUNCTIONS *************------------
-// Filter and then Populate Results
-function filterAndPopulateResults() {
-const filteredProperties = filterProperties();
-//sort properties before populating:
-// const sortedProperties = sortPropertiesByPrice(filteredProperties); //sorting the filtered properties from previous line
-populateResults(filteredProperties);
-}
-
-// Initial population of cards
-filterAndPopulateResults();
-
-//populate cards function
-function populateResults(filteredResults) {
-// get the results div
-const resultsDiv = document.getElementById("results");
-// clear previous results
-resultsDiv.innerHTML = "";
-
-// check if filtered properties is empty
-if (filteredResults.length === 0) {
-    resultsDiv.innerHTML = `<p class="no-results">No Results Found</p>`;
-} else {
-    // if filtered results is not empty
-    filteredResults.forEach(property => {
-        //create a card for that property
-        const propertyCardHTML = `
-        <div class="property">
-            <div class="swiper">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide"><img src="${property.image}" alt="${property.name} image 1" class="property-image" value=${property.id}></div>
-                    <div class="swiper-slide"><img src="${property.image}" alt="${property.name} image 2" class="property-image" value=${property.id}></div>
-                    <div class="swiper-slide"><img src="${property.image}" alt="${property.name} image 3" class="property-image" value=${property.id}></div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-            <div class="property-details">
-                <h2>${property.name}</h2>
-                <p>${property.location}</p>
-                <div class="more-details">
-                    <div class="property-amenities">
-                        <p>${property.bedrooms} <i class="fa-solid fa-bed"></i></p>
-                        <p>${property.bathrooms} <i class="fa-solid fa-bath"></i></p>
-                    </div>
-                    <h4>${property.price}</h4>
-                </div>
-            </div>
-        </div>
-        `;
-        resultsDiv.innerHTML += propertyCardHTML;
-        attachModalToImages(); // attaching event listeners straight after population
-
-         // // Re-initialize Swiper Instances
-        const swipers = document.querySelectorAll('.swiper');
-        swipers.forEach(swiperEl => {
-            new Swiper(swiperEl, {
-                direction: 'vertical',
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                }
-            });
-        });
-    });
-}
-}
-
-
-
-// ---------------********** MODAL FUNCTIONS *********--------------
-// attach a click to each image and open the modal
-function attachModalToImages() {
-    // Get the the details modal from the HTML
-    const detailsModal = document.getElementById('details-modal');
-    // Get all the images
-    const images = document.querySelectorAll('.property-image');
-    
-    // run a for loop over the images array to add click event to each image
-    images.forEach((image, index) => {
-        image.addEventListener('click', function (event) {
-            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            detailsModal.dataset.scrollPosition = scrollPosition; // Storing scroll position in the modal's dataset
-            const rect = event.target.getBoundingClientRect(); // Get the position of the clicked image relative to the viewport
-            const imageTop = rect.top + scrollPosition; // Calculate the top position of the clicked image
-            const windowHeight = window.innerHeight;
-            const dialogHeight = detailsModal.offsetHeight; // height of the modal
-            const viewportTop = scrollPosition;
-
-            let dialogTop = viewportTop + (windowHeight - dialogHeight) / 2; // Calculate the top position for the dialog to be centered
-
-            // Ensure the dialog doesn't go above or below the viewport:
-            if (dialogTop < imageTop) {
-                dialogTop = imageTop; // Place the dialog just below the clicked image if there's enough space
-            } else if (dialogTop + dialogHeight > windowHeight + viewportTop) {
-                dialogTop = windowHeight + viewportTop - dialogHeight; // Place the dialog at the bottom of the viewport if there's not enough space
-            }
-
-            detailsModal.style.top = dialogTop + 'px'; // set top position of the dialog
-
-            console.log('image click working');
-            detailsModal.showModal(); // open modal
-            document.body.classList.add('modal-open'); // add class to disable scrolling
-            // add close function:
-            closeDetailsModal();
-            // populate modal with correct info:
-            console.log(event.target.getAttribute('value'));
-            populateModal(event.target.getAttribute('value'));
-        });
-    });
-}
-
-
-
-// closing modals
-function closeDetailsModal() {
-    // Get close button of modal
-    const close = document.getElementById('close-modal');
-    // Get the modal
-    const detailsModal = document.getElementById('details-modal');
-
-    //click event on close modal to close the modal
-    close.addEventListener('click', function () {
-        detailsModal.close();
-        document.body.classList.remove('modal-open'); // remove scroll-lock class
-        const scrollPosition = detailsModal.dataset.scrollPosition || 0;
-        window.scrollTo(0, scrollPosition);
-    });
-}
-
-function populateModal(imageId) {
-// Get the modal:
-const detailsModal = document.querySelector('.modal-contents');
-
-detailsModal.innerHTML = `
-<img src="${properties[imageId - 1].image}" alt="${properties[imageId - 1].name} image 1">
-    <h2>${properties[imageId - 1].name}</h2>
-    <p>${properties[imageId - 1].location}</p>
-    <h4>${properties[imageId - 1].price}</h4>
-    <div class="modal-ammenities">
-        <p>${properties[imageId - 1].bedrooms} <i class="fa-solid fa-bed"></i></p>
-        <p>${properties[imageId - 1].bathrooms} <i class="fa-solid fa-bath"></i></p>
-    </div>
-    <p class="property-description">${properties[imageId - 1].description}</p>
-    <button class="booking-button">Enquire Now</button>
-`;
-}
-
-
-// --------********* SWIPER JS ********--------
-// initialise swiper js
-const swiper = new Swiper('.swiper', {
-// Optional parameters
-direction: 'vertical',
-loop: true,
-
-// If we need pagination
-pagination: {
-    el: '.swiper-pagination',
-    clickable: true, // enable clickable pagination bullets
-}
-});

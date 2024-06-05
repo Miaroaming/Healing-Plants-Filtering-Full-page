@@ -1,123 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FullPage.js CSS from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.11/fullpage.min.css" />
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/style.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Single Page App</title>
 </head>
+
 <body>
-    
-    <h2>Mimi's Herbs</h2>
+    <div id="fullpage">
+        <div class="section">
+            <h2>Welcome to Mimi's Healing Plants</h2> <br> <br> <br> <br>
+            <p>These plants do more than just look pretty!</p> <br>
+            <p>Once you've clicked on a plant, click the right arrow to find out more</p>
 
-    <!-- Filters -->
-    <div class="filter-container">
-
-        <!-- Location Filter -->
-        <div class="filter">
-            <label for="location">Location:</label>
-            <select name="location" id="location" class="full-width-select">
-                <!-- Options for the select & a value -->
-                <option value="">All of New Zealand</option>
-                <option value="Northland">Northland</option>
-                <option value="Auckland">Auckland</option>
-                <option value="Waikato">Waikato</option>
-                <option value="Bay Of Plenty">Bay of Plenty</option>
-                <option value="Gisborne">Gisborne</option>
-                <option value="Hawkes Bay">Hawkes Bay</option>
-                <!-- Rest of options -->
-            </select>
         </div>
 
-        <!-- Bedrooms -->
-        <div class="filter">
-            <label for="bedrooms">Bedrooms Min:</label>
-            <select name="bedrooms" id="bedrooms" class="full-width-select">
-                <option value="">Any</option>
-                <option value="1">1+</option>
-                <option value="2">2+</option>
-                <option value="3">3+</option>
-                <option value="4">4+</option>
-                <option value="5">5+</option>
-                <option value="6">6+</option>
-            </select>
-        </div>
+        <div class="section">
+            <!-- My Filter Container -->
+            <div class="filter-container">
 
-        <!-- Bathrooms -->
-        <div class="filter">
-            <label for="bathrooms">Bathrooms Min:</label>
-            <select name="bathrooms" id="bathrooms" class="full-width-select">
-                <option value="">Any</option>
-                <option value="1">1+</option>
-                <option value="2">2+</option>
-                <option value="3">3+</option>
-                <option value="4">4 or more</option>
-            </select>
-        </div>
+                <!-- Location Filter -->
+                <div class="filter">
+                    <label for="type">Type of Plant:</label>
+                    <select name="type" id="type" class="full-width-select">
+                        <!-- Options for the select & a value -->
+                        <option value="">All</option>
+                        <option value="Herbs">Herbs</option>
+                        <option value="Flowers">Flowers</option>
+                        <option value="Spices">Spices</option>
+                        <option value="Fruits">Fruits</option>
+                        <option value="Seeds">Seeds</option>
+                        <option value="Roots">Roots</option>
+                        <option value="Shrubs">Shrubs</option>
+                        <option value="Trees">Trees</option>
+                    </select>
+                </div>
 
-        <!-- Price Min -->
-        <div class="filter">
-            <label for="priceMin">Price Min:</label>
-            <select name="priceMin" id="priceMin" class="full-width-select">
-                <option value="">Any</option>
-                <option value="100000">$100k</option>
-                <option value="200000">$200k</option>
-                <option value="300000">$300k</option>
-                <option value="400000">$400k</option>
-                <option value="500000">$500k</option>
-                <option value="600000">$600k</option>
-                <option value="700000">$700k</option>
-                <option value="800000">$800k</option>
-                <option value="900000">$900k</option>
-                <option value="1000000">$1M</option>
-            </select>
-        </div>
+                <!-- Bedrooms -->
+                <div class="filter">
+                    <label for="benefits">Health Benefits</label>
+                    <select name="benefits" id="benefits" class="full-width-select">
+                        <option value="">All</option>
+                        <option value="Anti-Inflammatory">Anti-Inflammatory</option>
+                        <option value="Antibacterial">Antibacterial/Antimicrobial</option>
+                        <option value="Antioxidant">Antioxidant</option>
+                        <option value="Immune System Boost">Immune System Boost</option>
+                        <option value="Digestive Health">Digestive Health</option>
+                        <option value="Stress Relief and Sleep Aid">Stress Relief and Sleep Aid</option>
+                        <option value="Cardiovascular Health">Cardiovascular Health</option>
+                        <option value="Pain Relief">Pain Relief</option>
+                        <option value="Skin Health">Skin Health</option>
+                        <option value="Blood Sugar Regulation">Blood Sugar Regulation</option>
+                    </select>
+                </div>
+            </div>
+            <!-- End of filter container -->
 
-        <!-- Price Max -->
-        <div class="filter">
-            <label for="priceMax">Price Max:</label>
-            <select name="priceMax" id="priceMax" class="full-width-select">
-                <option value="">Any</option>
-                <option value="100000">$100k</option>
-                <option value="200000">$200k</option>
-                <option value="300000">$300k</option>
-                <option value="400000">$400k</option>
-                <option value="500000">$500k</option>
-                <option value="600000">$600k</option>
-                <option value="700000">$700k</option>
-                <option value="800000">$800k</option>
-                <option value="900000">$900k</option>
-                <option value="1000000">$1M</option>
-            </select>
-        </div>
+            <!-- Sorting Options -->
+            <div class="sorting-container">
+                <p>Sorting Options:</p>
+                <div class="sorting-btn-container">
+                    <button class="sorting-button" id="price-high-to-low-btn">$$$ - $</button>
+                    <button class="sorting-button" id="price-low-to-high-btn">$ - $$$</button>
+                    <button class="sorting-button" id="alphabetical-btn">A - Z</button>
+                </div>
+            </div>
 
+            <!-- Results Grid -->
+            <div class="results" id="results"></div>
+
+            <!-- Modal *TO BE DONE* -->
+            <dialog id="details-modal">
+                <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+                <div class="modal-contents">
+                    <!-- populated thru js -->
+                </div>
+            </dialog>
+        </div>
     </div>
-    <!-- End of filter container -->
 
-   <!-- Sorting Options -->
-   <div class="sorting-container">
-    <p>Sorting Options:</p>
-    <div class="sorting-btn-container">
-        <button class="sorting-button" id="price-high-to-low-btn">$$$ - $</button>
-        <button class="sorting-button" id="price-low-to-high-btn">$ - $$$</button>
-        <button class="sorting-button" id="alphabetical-btn">A - Z</button>
+    <div class="navigation-buttons">
+        <button id="goToSection1">Welcome</button>
+        <button id="goToSection2">Plants</button>
     </div>
-</div>
 
-    <!-- Results Grid -->
-    <div class="results" id="results"></div>
-
-    <!-- Modal *TO BE DONE* -->
-    <dialog id="details-modal">
-        <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
-        <div class="modal-contents">
-            <!-- populated thru js -->
-        </div>
-    </dialog>
-
+    <!-- FullPage.js JS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.11/fullpage.min.js"></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Font Awesome -->
@@ -125,4 +100,5 @@
     <!-- Custom JS -->
     <script src="./js/script.js"></script>
 </body>
+
 </html>
