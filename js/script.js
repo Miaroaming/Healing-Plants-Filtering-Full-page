@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
         licenseKey: 'gplv3-license',
         autoScrolling: true,
         navigation: true,
-        anchors: ['Welcome', 'Lavender', 'Eucalyptus', 'Rosemary', 'Aloe-Vera'],
-        navigationTooltips: ['Welcome', 'Lavender', 'Eucalyptus', 'Rosemary', 'Aloe-Vera'],
+        anchors: ['Welcome', 'Signup', 'Plants'],
+        navigationTooltips: ['Welcome', 'Signup', 'Plants'],
         showActiveTooltip: true,
         scrollingSpeed: 700,
     });
@@ -29,13 +29,60 @@ document.getElementById('goToSection3').addEventListener('click', function () {
     moveToSection(3);
 });
 
-document.getElementById('goToSection4').addEventListener('click', function () {
-    moveToSection(4);
-});
+// Form js
+// let user;
 
-document.getElementById('goToSection5').addEventListener('click', function () {
-    moveToSection(5);
-});
+//     // Click on the submit Button:
+//     $('#submitButton').click(function(event) {
+//         event.preventDefault();
+//         console.log('working');
+
+//         // Setup Regex for form validation:
+//         const usernameRegex = /^[a-zA-Z0-9_]{3,15}$/;
+//         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+//         // Get input values:
+//         const username = $('#username').val();
+//         const email = $('#email').val();
+//         const password = $('#password').val();
+
+//         console.log(username + password + email);
+
+//         // Test against regex for form validation:
+//         if (!usernameRegex.test(username)) {
+//             $('#formMessage').html(`<p>'Invalid username. Must be 3-15 characters long and contain only letters, numbers, and underscores.'</p>`);
+//         } else if (!emailRegex.test(email)) {
+//             $('#formMessage').html(`<p>'Invalid email format.'</p>`);
+//         } else if (!passwordRegex.test(password)) {
+//             $('#formMessage').html(`<p>'Password must be at least 8 characters long and contain both letters and numbers.'</p>`);
+//         } else {
+//             // if passed all regex tests:
+//             $('#formMessage').html('');
+//             // set user equal to the username:
+//             user = username;//
+//             console.log(user);
+//             // Set the logged in user span to the user value:
+//             checkForLoggedInUser();
+//             // Move to slide 2 of section 1
+//             fullpage_api.moveTo(2,1); // slide 2
+//         }
+//     })
+
+//     function checkForLoggedInUser() {
+//         if (!user) {
+//             console.log("log in");
+//         }
+//         else {
+//             console.log(user);
+//             $('#slide2').html(`<h2>Hey, <span id="loggedInUser">${user}</span>!</h2>`);
+//             $('nav').html(`<h2>Welcome Back, <span id="loggedInUser">${user}</span>!</h2>`);
+//         }
+//     }
+
+//     checkForLoggedInUser(); // because no vlaue is assigned to user it treats it as false
+
+
 
 
 // Filter js
@@ -262,3 +309,254 @@ const plants = [{
         description: `Echinacea (aka purple coneflower) is a group of plants that are rich in antioxidants and may help support immunity. They’re available in several different forms, which vary in terms of recommended dosage.`
     },
 ];
+
+// input elements - Filter
+const typeFilter = document.getElementById("type");
+const benefitsFilter = document.getElementById("benefits");
+
+// input elements - Sorting
+const highToLowBtn = document.getElementById('price-high-to-low-btn');
+const lowToHighBtn = document.getElementById('price-low-to-high-btn');
+const alphabeticalBtn = document.getElementById('alphabetical-btn');
+
+// ************* Click Functions ****************
+// onchange event on each filter:
+// Type -
+typeFilter.addEventListener("change", function () {
+    console.dir(typeFilter.value);
+    filterAndPopulateResults();
+});
+
+//Benefits -
+benefitsFilter.addEventListener("change", function () {
+    console.dir(benefitsFilter.value);
+    filterAndPopulateResults();
+});
+
+// Sorting button clicks
+// high to low
+highToLowBtn.addEventListener('click', function () {
+    const filteredPlants = filterPlants();
+    const sortedPlants = sortPlantsByPriceHighToLow(filteredPlants);
+    populateResults(sortedPlants);
+});
+
+// low to high
+lowToHighBtn.addEventListener('click', function () {
+    const filteredPlants = filterPlants();
+    const sortedPlants = sortPlantsByPriceLowToHigh(filteredPlants);
+    populateResults(sortedPlants);
+});
+
+// alphabetically
+alphabeticalBtn.addEventListener('click', function () {
+    const filteredPlants = filterPlants();
+    const sortedPlants = sortPlantsAlphabetical(filteredPlants);
+    populateResults(sortedPlants);
+});
+
+// ********* Filtering Functions & Logic *********
+//filter results - return an array of filtered plants
+function filterPlants() {
+    const filteredPlants = plants.filter(plant => {
+        // check if plants match
+        const plantType = plant.type.toLowerCase();
+        const filterValue = typeFilter.value.toLowerCase();
+
+        const plantBenefits = plant.benefits.toLowerCase();
+        const benefitsFilterValue = benefitsFilter.value.toLowerCase();
+        // returns non-matching products as false therefore doesn't add to array
+        if (filterValue && !plantType.includes(filterValue)) {
+            return false;
+        }
+        //check if benefits match
+        if (benefitsFilterValue && !plantBenefits.includes(benefitsFilterValue)) {
+            return false;
+        }
+
+        //if all conditions pass, include the proper in the filtered array
+        return true;
+    });
+    return filteredPlants;
+};
+
+// ********* Sorting Functions **********
+// sort results - sort by price - lowest to highest
+function sortPlantsByPriceLowToHigh(plants) {
+    return plants.sort((a, b) => {
+        const priceA = parseFloat(a.price.replace(/\$/g, ''));//.replace(/./g, ''));
+        const priceB = parseFloat(b.price.replace(/\$/g, ''));//.replace(/./g, ''));
+        return priceA - priceB;
+    })
+}
+
+// sort results - sort by price - high to low
+function sortPlantsByPriceHighToLow(plants) {
+    return plants.sort((a, b) => {
+        const priceA = parseFloat(a.price.replace(/\$/g, ''));//.replace(/./g, ''));
+        const priceB = parseFloat(b.price.replace(/\$/g, ''));//.replace(/./g, ''));
+        return priceB - priceA;
+    })
+}
+
+// Sort by name alphabetically
+function sortPlantsAlphabetical(plants) {
+    return plants.sort((a, b) => {
+        const nameA = a.name.toLowerCase(); // plants a name to lowercase
+        const nameB = b.name.toLowerCase(); // plants b name to lowercase
+        return nameA.localeCompare(nameB);
+    })
+}
+
+// ******** Populate Functions **********
+// Filter and then populate results
+function filterAndPopulateResults() {
+    const filteredPlants = filterPlants();
+    // sort plants before populating
+    populateResults(filteredPlants);
+}
+
+// initial population of cards
+filterAndPopulateResults();
+
+// populate cards function
+function populateResults(filteredResults) {
+    // get the results div
+    const resultsDiv = document.getElementById("results");
+    // clear previous results
+    resultsDiv.innerHTML = "";
+
+    // check if filtered plants are empty
+    if (filteredResults.length === 0) {
+        resultsDiv.innerHTML = `<p class="no-results">No Results Found</p>`
+    } else {
+        // if filtered results are not empty
+        filteredResults.forEach(plant => {
+            // create a card for the plant!!
+            const plantCardHTML = `
+            <div class="plant">
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="${plant.image1}" alt="${plant.name} image 1" class="plant-image" value=${plant.id}></div>
+                    <div class="swiper-slide"><img src="${plant.image2}" alt="${plant.name} image 2" class="plant-image" value=${plant.id}></div>
+                    <div class="swiper-slide"><img src="${plant.image3}" alt="${plant.name} image 3" class="plant-image" value=${plant.id}></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="plant-details">
+                <h2>${plant.name}</h2>
+                <p>${plant.type}</p>
+                <div class="more-details">
+                    <h4>${plant.price}</h4>
+                </div>
+            </div>
+        </div>
+        `;
+            resultsDiv.innerHTML += plantCardHTML;
+            attachModalToImages(); // attaching event listeners straight after population
+
+            // re-initialize swiper instances
+            const swipers = document.querySelectorAll('.swiper');
+            swipers.forEach(swiperEl => {
+                new Swiper(swiperEl, {
+                    direction: 'vertical',
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    }
+                })
+            });
+        });
+    }
+};
+
+
+// ******* Modal Functions ********
+// attach a click to each image and open the modal
+function attachModalToImages() {
+    // get all the images
+    const images = document.querySelectorAll('.plant-image');
+    // get the details modeal from the html
+    const detailsModal = document.getElementById('details-modal');
+
+    // run a for loop over the images array to add click event to each image
+    for (let i = 0; i < images.length; i++) {
+        images[i].addEventListener('click', function (event) {
+            const scrollPosition = window.pageXOffset || document.documentElement.scrollTop;
+            detailsModal.dataset.scrollPosition = scrollPosition // stores scroll position in the modals dataset
+            const rect = event.target.getBoundingClientRect(); // get the position of the clicked image relative to the viewport
+            const imageTop = rect.top + scrollPosition; // calculate the top position of the clicked image
+            const windowHeight = window.innerHeight;
+            const dialogHeight = detailsModal.offsetHeight; // height of the modal
+            const viewportTop = scrollPosition;
+
+            let dialogTop = viewportTop + (windowHeight - dialogHeight) / 2; // Calcualte the top position for the dialog to be centered
+
+            //Ensure the dilaog doesnt go above or below the viewport:
+            if (dialogTop < imageTop) {
+                dialogTop = imageTop; // Place the dialog just below the clicked image if theres enough space
+            } else if (dialogTop + dialogHeight > windowHeight + viewportTop) {
+                dialogTop = windowHeight + viewportTop - dialogHeight; // Place the dialog at the bottom of the viewport if theres not enough space
+            }
+
+            detailsModal.style.top = dialogTop + 'px'; // set top position of the dialog
+
+            console.log('image click working');
+            detailsModal.showModal(); // open modal
+            document.body.classList.add('modal-open'); // add class to disable scrolling
+            // add close function:
+            closeDetailsModal();
+            // populate modal with correct info:
+            console.log(event.target.getAttribute('value'));
+            populateModal(event.target.getAttribute('value'));
+        })
+    }
+}
+
+// closing modals
+function closeDetailsModal() {
+    // Get close button of modal
+    const close = document.getElementById('close-modal');
+    // Get the modal
+    const detailsModal = document.getElementById('details-modal');
+
+    //click event on close modal to close the modal
+    close.addEventListener('click', function () {
+        detailsModal.close();
+        document.body.classList.remove('modal-open'); // remove scroll-lock class
+        const scrollPosition = detailsModal.dataset.scrollPosition || 0;
+        window.scrollTo(0, scrollPosition);
+    })
+}
+
+function populateModal(imageId) {
+    // Get the modal:
+    const detailsModal = document.querySelector('.modal-contents');
+
+    detailsModal.innerHTML = `
+    <img src="${plants[imageId - 1].image1}" alt="${plants[imageId - 1].name} image 1">
+        <h2>${plants[imageId - 1].name}</h2>
+        <p>${plants[imageId - 1].type}</p>
+        <h4>${plants[imageId - 1].price}</h4>
+        <p class="plant-description">${plants[imageId - 1].description}</p>
+        <button class="shop-button">Shop Now</button>
+    `;
+}
+
+
+// --------********* SWIPER JS ********--------
+// initialise swiper js
+const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'vertical',
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true, // enable clickable pagination bullets
+    }
+});

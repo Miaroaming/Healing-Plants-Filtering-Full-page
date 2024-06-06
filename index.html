@@ -15,18 +15,31 @@
 
 <body>
     <div id="fullpage">
-        <div class="section">
-            <h2>Welcome to Mimi's Healing Plants</h2> <br> <br> <br> <br>
-            <p>These plants do more than just look pretty!</p> <br>
-            <p>Once you've clicked on a plant, click the right arrow to find out more</p>
+        <div class="section" id="welcome-slide">
+            <h2 id="welcome-h2">Welcome to Mimi's Healing Plants</h2> <br> <br> <br> <br>
+            <p class="welcome-p">These plants do more than just look pretty!</p> <br>
+            <p class="welcome-p">Once you've clicked on a plant, click the right arrow to find out more</p>
+        </div>
 
+        <div class="section" id="signup-slide">
+            <div class="slide">
+                <h2 id="signup-h2">Sign Up</h2>
+                <p id="signup-p">Fill in your details below to have access to our variety of healing plants!</p>
+                <form id="signupForm">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button id="submitButton">Sign Up</button>
+                </form>
+                <div id="formMessage"></div>
+            </div>
         </div>
 
         <div class="section">
             <!-- My Filter Container -->
             <div class="filter-container">
-
-                <!-- Location Filter -->
+                <p>Filtering Options:</p>
+                <!-- Type of plants Filter -->
                 <div class="filter">
                     <label for="type">Type of Plant:</label>
                     <select name="type" id="type" class="full-width-select">
@@ -43,9 +56,9 @@
                     </select>
                 </div>
 
-                <!-- Bedrooms -->
+                <!-- Health benefits of each plant -->
                 <div class="filter">
-                    <label for="benefits">Health Benefits</label>
+                    <label for="benefits">Health Benefits:</label>
                     <select name="benefits" id="benefits" class="full-width-select">
                         <option value="">All</option>
                         <option value="Anti-Inflammatory">Anti-Inflammatory</option>
@@ -87,8 +100,9 @@
     </div>
 
     <div class="navigation-buttons">
-        <button id="goToSection1">Welcome</button>
-        <button id="goToSection2">Plants</button>
+        <button class="navbtn" id="goToSection1">Welcome</button>
+        <button class="navbtn" id="goToSection2">Signup</button>
+        <button class="navbtn" id="goToSection3">Plants!</button>
     </div>
 
     <!-- FullPage.js JS from CDN -->
