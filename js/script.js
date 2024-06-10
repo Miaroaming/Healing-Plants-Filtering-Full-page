@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navigationTooltips: ['Welcome', 'Signup', 'Plants'],
         showActiveTooltip: true,
         scrollingSpeed: 700,
+        // fixedElements: '.filter-container'
     });
 });
 
@@ -25,64 +26,47 @@ document.getElementById('goToSection2').addEventListener('click', function () {
     moveToSection(2);
 });
 
-document.getElementById('goToSection3').addEventListener('click', function () {
-    moveToSection(3);
-});
-
 // Form js
-// let user;
+let user;
 
 //     // Click on the submit Button:
-//     $('#submitButton').click(function(event) {
-//         event.preventDefault();
-//         console.log('working');
+document.getElementById('submitButton').addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log('working');
 
-//         // Setup Regex for form validation:
-//         const usernameRegex = /^[a-zA-Z0-9_]{3,15}$/;
-//         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    // Get all the inputs and values from the signup from:
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-//         // Get input values:
-//         const username = $('#username').val();
-//         const email = $('#email').val();
-//         const password = $('#password').val();
+    console.log("Username: " + username);
+    console.log("Email: " + email);
+    console.log("Password: " + password);
 
-//         console.log(username + password + email);
+    // Setup regex statement for each input to be tested against:
+    const usernameRegex = /^[a-zA-Z0-9_]{3,15}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-//         // Test against regex for form validation:
-//         if (!usernameRegex.test(username)) {
-//             $('#formMessage').html(`<p>'Invalid username. Must be 3-15 characters long and contain only letters, numbers, and underscores.'</p>`);
-//         } else if (!emailRegex.test(email)) {
-//             $('#formMessage').html(`<p>'Invalid email format.'</p>`);
-//         } else if (!passwordRegex.test(password)) {
-//             $('#formMessage').html(`<p>'Password must be at least 8 characters long and contain both letters and numbers.'</p>`);
-//         } else {
-//             // if passed all regex tests:
-//             $('#formMessage').html('');
-//             // set user equal to the username:
-//             user = username;//
-//             console.log(user);
-//             // Set the logged in user span to the user value:
-//             checkForLoggedInUser();
-//             // Move to slide 2 of section 1
-//             fullpage_api.moveTo(2,1); // slide 2
-//         }
-//     })
-
-//     function checkForLoggedInUser() {
-//         if (!user) {
-//             console.log("log in");
-//         }
-//         else {
-//             console.log(user);
-//             $('#slide2').html(`<h2>Hey, <span id="loggedInUser">${user}</span>!</h2>`);
-//             $('nav').html(`<h2>Welcome Back, <span id="loggedInUser">${user}</span>!</h2>`);
-//         }
-//     }
-
-//     checkForLoggedInUser(); // because no vlaue is assigned to user it treats it as false
+    // Test against regex for form validation:
+        if (!usernameRegex.test(username)) {
+            document.getElementById('formMessage').innerHTML = `<p>'Invalid username. Must be 3-15 characters long and contain only letters, numbers, and underscores.'</p>`;
+        } else if (!emailRegex.test(email)) {
+            document.getElementById('formMessage').innerHTML =`<p>'Invalid email format.'</p>`;
+        } else if (!passwordRegex.test(password)) {
+            document.getElementById('formMessage').innerHTML =`<p>'Password must be at least 8 characters long and contain both letters and numbers.'</p>`;
+        } else {
+            // if passed all regex tests:
+            document.getElementById('formMessage').innerHTML = ``;
+            // set user equal to the username:
+            user = username;//
+            console.log(user);
+            // Move to slide 2 of section 1
+            fullpage_api.moveTo(3); // slide 2
+        }
 
 
+});
 
 
 // Filter js
@@ -378,25 +362,25 @@ function filterPlants() {
         return true;
     });
     return filteredPlants;
-};
+}
 
 // ********* Sorting Functions **********
 // sort results - sort by price - lowest to highest
 function sortPlantsByPriceLowToHigh(plants) {
     return plants.sort((a, b) => {
-        const priceA = parseFloat(a.price.replace(/\$/g, ''));//.replace(/./g, ''));
-        const priceB = parseFloat(b.price.replace(/\$/g, ''));//.replace(/./g, ''));
+        const priceA = parseFloat(a.price.replace(/\$/g, '')); //.replace(/./g, ''));
+        const priceB = parseFloat(b.price.replace(/\$/g, '')); //.replace(/./g, ''));
         return priceA - priceB;
-    })
+    });
 }
 
 // sort results - sort by price - high to low
 function sortPlantsByPriceHighToLow(plants) {
     return plants.sort((a, b) => {
-        const priceA = parseFloat(a.price.replace(/\$/g, ''));//.replace(/./g, ''));
-        const priceB = parseFloat(b.price.replace(/\$/g, ''));//.replace(/./g, ''));
+        const priceA = parseFloat(a.price.replace(/\$/g, '')); //.replace(/./g, ''));
+        const priceB = parseFloat(b.price.replace(/\$/g, '')); //.replace(/./g, ''));
         return priceB - priceA;
-    })
+    });
 }
 
 // Sort by name alphabetically
@@ -405,7 +389,7 @@ function sortPlantsAlphabetical(plants) {
         const nameA = a.name.toLowerCase(); // plants a name to lowercase
         const nameB = b.name.toLowerCase(); // plants b name to lowercase
         return nameA.localeCompare(nameB);
-    })
+    });
 }
 
 // ******** Populate Functions **********
@@ -428,7 +412,7 @@ function populateResults(filteredResults) {
 
     // check if filtered plants are empty
     if (filteredResults.length === 0) {
-        resultsDiv.innerHTML = `<p class="no-results">No Results Found</p>`
+        resultsDiv.innerHTML = `<p class="no-results">No Results Found</p>`;
     } else {
         // if filtered results are not empty
         filteredResults.forEach(plant => {
@@ -467,11 +451,11 @@ function populateResults(filteredResults) {
                         el: '.swiper-pagination',
                         clickable: true,
                     }
-                })
+                });
             });
         });
     }
-};
+}
 
 
 // ******* Modal Functions ********
@@ -486,7 +470,7 @@ function attachModalToImages() {
     for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('click', function (event) {
             const scrollPosition = window.pageXOffset || document.documentElement.scrollTop;
-            detailsModal.dataset.scrollPosition = scrollPosition // stores scroll position in the modals dataset
+            detailsModal.dataset.scrollPosition = scrollPosition; // stores scroll position in the modals dataset
             const rect = event.target.getBoundingClientRect(); // get the position of the clicked image relative to the viewport
             const imageTop = rect.top + scrollPosition; // calculate the top position of the clicked image
             const windowHeight = window.innerHeight;
@@ -512,7 +496,7 @@ function attachModalToImages() {
             // populate modal with correct info:
             console.log(event.target.getAttribute('value'));
             populateModal(event.target.getAttribute('value'));
-        })
+        });
     }
 }
 
@@ -529,7 +513,7 @@ function closeDetailsModal() {
         document.body.classList.remove('modal-open'); // remove scroll-lock class
         const scrollPosition = detailsModal.dataset.scrollPosition || 0;
         window.scrollTo(0, scrollPosition);
-    })
+    });
 }
 
 function populateModal(imageId) {

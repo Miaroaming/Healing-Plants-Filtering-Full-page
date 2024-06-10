@@ -22,7 +22,32 @@
     padding-right: 11%;
 }
 
+#goToSection2 {
+    background-color: #1abc9c;
+    border: solid white 2px;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+.fa-arrow-down {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#goToSection2:hover {
+    cursor: pointer;
+    background-color: #159a7f;
+}
+
 #signup-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     color: white;
     background-color: #33924a;
@@ -30,35 +55,68 @@
 
 #signup-h2 {
     font-size: 4em;
+    margin-bottom: 20px;
 }
 
-.signup-p {
-    font-size: 40px;
-    padding-left: 11%;
-    padding-right: 11%;
+#signup-p {
+    font-size: 25px;
+    margin-bottom: 40px;
 }
 
-form {
+#signupForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#label-input-cont {
     display: flex;
     flex-direction: row;
+    gap: 50px;
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 30px;
+    align-items: center;
+    gap: 10px;
 }
 
 input {
     padding: 10px;
     font-size: 16px;
-    background-color: #ffffff;
-    border: none;   
+    background-color: #33924a;
+    border: solid white 2px;
     border-radius: 10px;
     margin-top: 10px;
 }
 
+input::placeholder {
+    color: white;
+}
+
 #submitButton {
     width: 90px;
-    padding: 0px;
+    padding: 10px;
+    color: white;
     border-radius: 10px;
-    border: none;
+    border: solid white 2px;
+    background-color: #33924a;
+}
+
+#submitButton:hover {
+    cursor: pointer;
+    background-color: #62e087;
+}
+
+#formMessage p {
+    padding-top: 20px;
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
 }
 
 .section:nth-child(1) {
@@ -102,6 +160,9 @@ input {
     gap: 40px;
     padding: 20px 0px 10px 0px;
     background-color: #0e3319;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
 }
 
 .filter-container p {
@@ -146,6 +207,9 @@ select:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    position: sticky;
+    top: 69px;
+    z-index: 100;
 }
 
 .sorting-container p {
@@ -342,4 +406,72 @@ body.modal-open {
     border: none;
     color: white;
     font-size: 16px;
+}
+
+/* Media Queries!!! */
+@media only screen and (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    select {
+        width: 210px;
+    }
+    .results {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    dialog {
+        width: 80%;
+    }
+
+    #signup-h2 {
+        margin-left: 20px;
+    }
+
+    #label-input-cont {
+        gap: 12px;
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    #welcome-h2 {
+        font-size: 3em;
+        margin-bottom: 25px;
+    }
+    .welcome-p {
+        font-size: 18px;
+    }
+
+    #signup-h2 {
+        font-size: 3em;
+    }
+    #signup-p {
+        font-size: 18px;
+        margin: 10px;
+    }
+
+    #signupForm{
+        flex-direction: column;
+    }
+    #label-input-cont {
+        flex-direction: column;
+    }
+    .label-input {
+        flex-direction: row;
+    }
+
+
+    .results {
+        grid-template-columns: 1fr;
+    }
+    select {
+        max-width: 300px;
+    }
+    dialog {
+        height: 80vh;
+    }
+    .plant-description {
+        padding: 0 32px;
+    }
 }

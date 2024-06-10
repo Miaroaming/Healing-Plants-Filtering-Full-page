@@ -16,23 +16,33 @@
 <body>
     <div id="fullpage">
         <div class="section" id="welcome-slide">
-            <h2 id="welcome-h2">Welcome to Mimi's Healing Plants</h2> <br> <br> <br> <br>
-            <p class="welcome-p">These plants do more than just look pretty!</p> <br>
+            <h2 id="welcome-h2">Welcome to Mimi's Healing Plants</h2>
+            <p class="welcome-p">These plants do more than just look pretty!</p>
             <p class="welcome-p">Once you've clicked on a plant, click the right arrow to find out more</p>
+            <button id="goToSection2">Check out our products! <i class="fa-solid fa-arrow-down"></i></button>
         </div>
 
         <div class="section" id="signup-slide">
-            <div class="slide">
-                <h2 id="signup-h2">Sign Up</h2>
+                <h2 id="signup-h2">Opps, you have to Sign Up first!</h2>
                 <p id="signup-p">Fill in your details below to have access to our variety of healing plants!</p>
                 <form id="signupForm">
-                    <input type="text" id="username" placeholder="Username" required>
-                    <input type="email" id="email" placeholder="Email" required>
-                    <input type="password" id="password" placeholder="Password" required>
+                    <div id="label-input-cont">
+                        <div class="label-input">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="label-input">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="label-input">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                        </div>
+                    </div>
                     <button id="submitButton">Sign Up</button>
                 </form>
                 <div id="formMessage"></div>
-            </div>
         </div>
 
         <div class="section">
@@ -100,9 +110,7 @@
     </div>
 
     <div class="navigation-buttons">
-        <button class="navbtn" id="goToSection1">Welcome</button>
-        <button class="navbtn" id="goToSection2">Signup</button>
-        <button class="navbtn" id="goToSection3">Plants!</button>
+        <button class="navbtn" id="goToSection1">Welcome Page</button>
     </div>
 
     <!-- FullPage.js JS from CDN -->
